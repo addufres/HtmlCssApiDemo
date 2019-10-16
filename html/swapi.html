@@ -8,8 +8,8 @@
     <!-- Page title -->
     <title>MAKING API CALLS FUN!</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
     <!-- Custom CSS -->
     <link href="css/styles.css" rel="stylesheet" type="text/css" media="all">
     <!-- SWAPI JS FILE -->
@@ -40,17 +40,17 @@
             </p>
 
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
-                    id="peopleSearch">
-                <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="searchForPeople()">Search
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="peopleSearch">
+                <button class="btn btn-secondary my-2 my-sm-0" id="peopleButton" type="button" onclick="searchForPeople()">Search
                     People</button>
             </form>
+            <div class="lead" id="peopleListing"></div>
             <br>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
-                    id="shipSearch">
-                <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="searchForShips()">Search Ships</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="shipSearch">
+                <button class="btn btn-secondary my-2 my-sm-0" id="shipButton" type="button" onclick="searchForShips()" >Search Ships</button>
             </form>
+            <div class="lead" id="shipListing"></div>
         </main>
 
         <footer class="mastfoot mt-auto">
@@ -144,24 +144,106 @@
 
         function searchForPeople() {
             var searchString = document.getElementById('peopleSearch').value;
+            $('#peopleListing').empty();
 
             swapiModule.getPeople({
                 search: searchString
             }, function (data) {
-                console.log("All results that match" + searchString, data);
+                console.log("All results that match " + searchString, data);
+
+                // Check if there is data returned and that the data is populated
+                if (data && data.results.length > 0) {
+
+                    var person = {
+                        by: "",
+                        ec: "",
+                        g: "",
+                        hc: "",
+                        h: "",
+                        m: "",
+                        n: "",
+                        sc: ""
+                    }
+                    $('#peopleListing').append(" <p class='lead' id='checkFor'>  * BBY = Before the Battle of Yavin. <br> Fun fact, the Battle of Yavin ended with the destruction of the first Death Star.</p>");
+
+                    for (var j = 0; j < data.results.length; j++) {
+
+                        person.by = data.results[j].birth_year + "*";
+                        person.ec = data.results[j].eye_color;
+                        person.g = data.results[j].gender;
+                        person.hc = data.results[j].hair_color;
+                        person.h = data.results[j].height + "cm";
+                        person.m = data.results[j].mass + "g";
+                        person.n = data.results[j].name;
+                        person.sc = data.results[j].skin_color;
+
+                        $('#peopleListing').append(" <li> <h3> " + person.n + "</h3> </li>");
+                        $('#peopleListing').append(" <li> Gender : " + person.g + " </li>");
+                        $('#peopleListing').append(" <li> Birth Year : " + person.by + " </li>");
+                        $('#peopleListing').append(" <li> Height : " + person.h + " </li>");
+                        $('#peopleListing').append(" <li> Eye Color: " + person.ec + " </li>");
+                        $('#peopleListing').append(" <li> Hair Color : " + person.hc + " </li>");
+                        $('#peopleListing').append(" <li> Weight : " + person.m + " </li>");
+                        $('#peopleListing').append(" <li> Skin Color: " + person.sc + " </li>");
+
+                    }
+                } else {
+                    $('#peopleListing').append(" <h3> The droids you seek are not found here... </h3>");
+                }
             });
         }
 
         function searchForShips() {
             var searchString = document.getElementById('shipSearch').value;
+            $('#shipListing').empty();
 
             swapiModule.getStarships({
                 search: searchString
             }, function (data) {
                 console.log("All results that match" + searchString, data);
+
+                // Check if there is data returned and that the data is populated
+                if (data && data.results.length > 0) {
+                    var ship = {
+                        m: "",
+                        n: "",
+                        l: "",
+                        man: "",
+                        sp: "",
+                        sc: ""
+                    }
+
+                    for (var j = 0; j < data.results.length; j++) {
+                        
+                        ship.m = data.results[j].model;
+                        ship.n = data.results[j].name;
+                        ship.l = data.results[j].length + "m";
+                        ship.man = data.results[j].manufacturer;
+                        ship.sp = data.results[j].max_atmosphering_speed + "kph";
+                        ship.sc = data.results[j].starship_class;
+
+                        $('#shipListing').append(" <li> <h3> " + ship.n + " </h3> </li>");
+                        $('#shipListing').append(" <li> Model: " + ship.m + " </li>");
+                        $('#shipListing').append(" <li> Manufacturer: " + ship.man + " </li>");
+                        $('#shipListing').append(" <li> Starship Class: " + ship.sc + " </li>");
+                        $('#shipListing').append(" <li> Length: " + ship.l + " </li>");
+                        $('#shipListing').append(" <li> Max Atmospheric Speed: " + ship.sp + " </li>");
+
+                    }
+                } else {
+                    $('#shipListing').append(" <h3> That ship can't fit in this hanger bay... </h3>");
+                }
             });
         }
     </script>
+
+    <!-- Optional JQUERY and JS stuff to help make life a little easier -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
