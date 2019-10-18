@@ -10,6 +10,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Optional JQUERY and JS stuff to help make life a little easier -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
     <!-- Custom CSS -->
     <link href="css/styles.css" rel="stylesheet" type="text/css" media="all">
 </head>
@@ -28,13 +36,25 @@
             </div>
         </header>
 
-        <main role="main" class="inner cover">
+        <main role="main" class="inner cover moved-up">
             <h1 class="cover-heading">DAD JOKE'S FOR DAYS</h1>
             <p class="lead">There is nothing better than dad jokes. Thats why there is an API to make them all the time.
                 Any time. Any place. All day. E'ry day.</p>
-            <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="getFact()">
-                CLICK ME TO GET A NEW FACT ABOUT NUMBERS!
+            <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="getJoke()">
+                Tell me a joke dad!
             </button>
+            <br><br>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
+                    id="jokeSearch">
+                <button class="btn btn-secondary my-2 my-sm-0" id="jokeButton" type="button"
+                    onclick="searchForJokes()">Search For a Joke</button>
+            </form>
+
+            <div id="dad-joke"></div>
+            <br><br>
+            
+
         </main>
 
         <footer class="mastfoot mt-auto">
@@ -43,6 +63,31 @@
             </div>
         </footer>
     </div>
+
+    <script>
+
+        getJoke = function() {
+            $('#dad-joke').empty();
+            $(function(){
+                $.getJSON('https://icanhazdadjoke.com/', function(data) {
+                    console.log(data.joke);
+                    $('#dad-joke').prepend("<h1 class='cover-heading gimme-space-dad-jeez'> " + data.joke + " </h1>");
+                });
+            });
+        }
+
+        function searchForJokes() {
+            $('#dad-joke').empty();
+            $(function() {
+                var term = document.getElementById('jokeSearch').value;
+                $.getJSON('https://icanhazdadjoke.com/search?term=' + term + '?page=1?limit=30', function(data) {
+                    console.log(data);
+                });
+            });
+        }
+
+
+    </script>
 </body>
 
 </html>

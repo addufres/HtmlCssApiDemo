@@ -124,7 +124,7 @@ body {
 */
 li {
   list-style: none;
-  text-align: left;
+  text-align: center;
 }
 
 /*
@@ -152,4 +152,18 @@ li {
 .up-top {
   position: absolute;
   top: 5%;
+}
+
+/*
+* Joke Page
+*/
+.gimme-space-dad-jeez {
+  margin-top: 15%;
+}
+
+.moved-up {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  right: 30%;
 }

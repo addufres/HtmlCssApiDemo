@@ -26,7 +26,10 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
-                <h3 class="masthead-brand"><a href="#">MAKING API CALLS FUN!</a></h3>
+                <h3 class="masthead-brand"><a href="index.html">MAKING API CALLS FUN!</a></h3>
+                <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="getFact()">
+                    CLICK ME TO GET A NEW FACT ABOUT NUMBERS!
+                </button>
                 <nav class="nav nav-masthead justify-content-center">
                     <a class="nav-link" href="index.html">HOME</a>
                     <a class="nav-link" href="swapi.html">SWAPI</a>
@@ -36,11 +39,8 @@
             </div>
         </header>
 
-        <main role="main" class="inner cover">
+       <main role="main" class="inner cover">
             <h1 class="cover-heading">NUMBERS API's</h1>
-            <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="getFact()">
-                CLICK ME TO GET A NEW FACT ABOUT NUMBERS!
-            </button>
         </main>
 
         <div id="fun-fact"></div>
@@ -69,6 +69,7 @@
 
             if(counter > 100) {
                 $('#fun-fact').empty();
+                counter = 0
             }
         }
 
