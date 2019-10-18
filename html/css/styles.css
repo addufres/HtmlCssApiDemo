@@ -167,3 +167,15 @@ li {
   left: 30%;
   right: 30%;
 }
+
+.side-by-side {
+  display: inline-block;
+  padding-left: 5%;
+  padding-right: 5%;
+  cursor: pointer;
+}
+
+.joke-listing {
+  border-bottom: #fff solid 6px;
+  padding: 2%;
+}

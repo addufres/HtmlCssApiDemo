@@ -53,15 +53,10 @@
 
             <div id="dad-joke"></div>
             <br><br>
-            
+            <span id="paging"></span>
 
         </main>
 
-        <footer class="mastfoot mt-auto">
-            <div class="inner">
-                <p>Follow me on <a href="https://www.linkedin.com/in/andrewdufresne13/" target="_blank">LinkedIn</a></p>
-            </div>
-        </footer>
     </div>
 
     <script>
@@ -78,10 +73,40 @@
 
         function searchForJokes() {
             $('#dad-joke').empty();
+            $('#paging').empty();
             $(function() {
                 var term = document.getElementById('jokeSearch').value;
-                $.getJSON('https://icanhazdadjoke.com/search?term=' + term + '?page=1?limit=30', function(data) {
-                    console.log(data);
+                $.getJSON('https://icanhazdadjoke.com/search?term=' + term + '&limit=10', function(data) {
+
+                    for(var i = 0; i < data.results.length; i++) {
+                        $('#dad-joke').prepend(" <li class='joke-listing'> <h3> " + data.results[i].joke + " </h3> </li> ")
+                    }
+
+                    if(data.total_pages > 1) {
+                        for(var i = 1; i <= data.total_pages; i++) {
+                            var page = i;
+                            if(data.current_page === i){
+                                $('#paging').append( " <li class='side-by-side'><a class='nav-link active' onclick='getPage("+page+")'>" + i + "</a></li> " );
+                            } else {
+                                $('#paging').append( " <li class='side-by-side'><a class='nav-link' onclick='getPage("+page+")'>" + i + "</a></li> " );
+                            }
+                        }
+                    }
+
+                });
+
+            });
+        }
+
+        function getPage(id) {
+            $('#dad-joke').empty();
+            $(function(){
+                var term = document.getElementById('jokeSearch').value;
+                page = id;
+                $.getJSON('https://icanhazdadjoke.com/search?term=' + term + '&page=' + page, function(data) {
+                    for(var i = 0; i < data.results.length; i++) {
+                        $('#dad-joke').prepend(" <li> <h3> " + data.results[i].joke + " </h3> </li> ")
+                    }
                 });
             });
         }
