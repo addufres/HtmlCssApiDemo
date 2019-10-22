@@ -183,11 +183,10 @@ li {
   padding: 2%;
 }
 
-<<<<<<< HEAD:html/css/styles.css
 .boxed-in {
   border: #fff solid 1px;
   padding: 1.5px;
-=======
+}
 /*
 * SWAPI PAGE
 */
@@ -198,5 +197,4 @@ li {
 
 .center-button {
   margin: 25%;
->>>>>>> fa820d803d08916a33af494d34c634ca932cb59e:css/styles.css
 }
