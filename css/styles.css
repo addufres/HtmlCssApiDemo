@@ -65,6 +65,7 @@ textarea {
  */
 .masthead {
   margin-bottom: 2rem;
+  z-index: 9999;
 }
 
 .masthead-brand {
@@ -145,11 +146,13 @@ li {
 .angle-left {
   transform: rotate(8deg);
   padding-top: 15%;
+  z-index: 0;
 }
 
 .angle-right {
   transform: rotate(-8deg);
   padding-top: 15%;
+  z-index: 0;
 }
 
 .up-top {

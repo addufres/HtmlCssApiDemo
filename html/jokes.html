@@ -41,7 +41,7 @@
             <p class="lead">There is nothing better than dad jokes. Thats why there is an API to make them all the time.
                 Any time. Any place. All day. E'ry day.</p>
             <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="getJoke()">
-                Tell me a joke dad!
+                Tell Me a Joke Dad!
             </button>
             <br><br>
             <form class="form-inline my-2 my-lg-0">
@@ -105,7 +105,6 @@
                 var term = document.getElementById('jokeSearch').value;
                 page = id;
                 $.getJSON('https://icanhazdadjoke.com/search?term=' + term + '&page=' + page + '&limit=10', function(data) {
-
                     for(var i = 0; i < data.results.length; i++) {
                         $('#dad-joke').prepend(" <li class='joke-listing'> <h3> " + data.results[i].joke + " </h3> </li> ")
                     }
