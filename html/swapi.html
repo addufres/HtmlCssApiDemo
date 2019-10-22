@@ -48,20 +48,27 @@
                     about this API and read up on its documentation here.</a>
             </p>
 
+            
             <form class="center-form form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
-                    id="peopleSearch">
-                <button class="btn btn-secondary my-2 my-sm-0" id="peopleButton" type="button"
+                <div class="center-form">
+                    <button class="clear-list btn btn-secondary my-2 my-sm-0" onclick="clearLists()">CLEAR LISTS</button><br><br>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
+                    id="peopleSearch"><br><br>
+                    <button class="btn btn-secondary my-2 my-sm-0" id="peopleButton" type="button"
                     onclick="searchForPeople()">Search
-                    People</button><br>&nbsp<br>&nbsp<br>&nbsp<button class="center-button btn btn-secondary my-2 my-sm-0" onclick="clearLists()">CLEAR LISTS</button>
+                    People</button>
+                </div>
             </form>
+            
             <div class="lead" id="peopleListing"></div>
             <br>
             <form class="center-form form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
-                    id="shipSearch"><br>&nbsp<br>&nbsp<br>&nbsp
-                <button class="btn btn-secondary my-2 my-sm-0" id="shipButton" type="button"
-                    onclick="searchForShips()">Search Ships</button>
+                <div class="center-form">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
+                        id="shipSearch"><br><br>
+                    <button class="btn btn-secondary my-2 my-sm-0" id="shipButton" type="button"
+                        onclick="searchForShips()">Search Ships</button>
+                </div>
             </form>
             <div class="lead" id="shipListing"></div>
         </main>
