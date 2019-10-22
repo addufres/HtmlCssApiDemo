@@ -49,9 +49,11 @@
         <div class="glide">
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
-              <li class="glide__slide">Start</li>
-              <li class="glide__slide">Middle</li>
-              <li class="glide__slide">End</li>
+              <li class="glide__slide"><img class="fiddy-percent" src="img/1.PNG" alt="Slide 1"></li>
+              <li class="glide__slide"><img class="fiddy-percent" src="img/2.PNG" alt="Slide 2"></li>
+              <li class="glide__slide"><img class="fiddy-percent" src="img/3.PNG" alt="Slide 3"></li>
+              <li class="glide__slide"><img class="fiddy-percent" src="img/4.PNG" alt="Slide 4"></li>
+              <li class="glide__slide"><img class="fiddy-percent" src="img/5.PNG" alt="Slide 5"></li>
             </ul>
           </div>
 
@@ -61,9 +63,34 @@
           </div>
         </div>
     </main>
-
+    <br><br><br><br>
 
     <div class="map-grid">
+      <h2>Google Maps API Integration</h2>
+
+      <p>In order to use the Maps Embed API from Google you must first register an API key with them.</p><br>
+      <p>An API key is an identifier unique to you used to authenticate requests from your application to the API server for usage.</p><br>
+      <p>Follow the steps below to get your own unique API key and set up your own Google application</p>
+      <ol>
+        <li>
+          <p>Sign into the <a href="https://console.cloud.google.com/google/maps-apis/overview"><strong>Google Cloud Platform Console.</strong></a></p>
+        </li>
+        <li>
+          <p>Create a new project for your API key to be associated to, or select an already created project to associate the API key you will create to. </p>
+        </li>
+        <li>
+          <p>Click the menu button and select APIs & Services > Credentials.</p>
+        </li>
+        <li>
+          <p>On the Credentials page, click Create credentials > API key. The API key created dialog displays your newly created API key.</p>
+        </li>
+        <li>
+          <p>Insert the following code on your webpage to generate your embedded map using your API key created.</p>
+          <textarea rows="3" cols="200" readonly>
+                <iframe src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY_GOES_HERE&amp;q=YOUR+SEARCH+QUERY+GOES+HERE" class="map" style="width:100%; height:30vw; margin-top:10%; border:0" allowfullscreen=""></iframe>
+          </textarea>
+        </li>
+      </ol>
       <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAy5iGtvYl-Q9TSA7vtOUerJUK4FOvsn5s&amp;q=University+of+Denver" class="map" style="width:100%; height:30vw; margin-top:10%; border:0" allowfullscreen=""></iframe>
     </div>
 
