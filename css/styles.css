@@ -179,3 +179,15 @@ li {
   border-bottom: #fff solid 6px;
   padding: 2%;
 }
+
+/*
+* SWAPI PAGE
+*/
+.center-form {
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+.center-button {
+  margin: 25%;
+}

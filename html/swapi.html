@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS -->
-    <link href="css/styles.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all">
     <!-- Optional JQUERY and JS stuff to help make life a little easier -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -28,9 +28,9 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
-                <h3 class="masthead-brand"><a href="index.html">MAKING API CALLS FUN!</a></h3>
+                <h3 class="masthead-brand"><a href="../index.html">MAKING API CALLS FUN!</a></h3>
                 <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link" href="index.html">HOME</a>
+                    <a class="nav-link" href="../index.html">HOME</a>
                     <a class="nav-link active" href="swapi.html">SWAPI</a>
                     <a class="nav-link" href="jokes.html">Dad Joke's</a>
                     <a class="nav-link" href="numbers.html">CLICK ME...</a>
@@ -48,18 +48,18 @@
                     about this API and read up on its documentation here.</a>
             </p>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form class="center-form form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
                     id="peopleSearch">
                 <button class="btn btn-secondary my-2 my-sm-0" id="peopleButton" type="button"
                     onclick="searchForPeople()">Search
-                    People</button><br>&nbsp<br>&nbsp<br>&nbsp<button class="btn btn-secondary my-2 my-sm-0" onclick="clearLists()">CLEAR LISTS</button>
+                    People</button><br>&nbsp<br>&nbsp<br>&nbsp<button class="center-button btn btn-secondary my-2 my-sm-0" onclick="clearLists()">CLEAR LISTS</button>
             </form>
             <div class="lead" id="peopleListing"></div>
             <br>
-            <form class="form-inline my-2 my-lg-0">
+            <form class="center-form form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
-                    id="shipSearch">
+                    id="shipSearch"><br>&nbsp<br>&nbsp<br>&nbsp
                 <button class="btn btn-secondary my-2 my-sm-0" id="shipButton" type="button"
                     onclick="searchForShips()">Search Ships</button>
             </form>
