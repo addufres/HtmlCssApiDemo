@@ -41,7 +41,7 @@
             <p class="lead">There is nothing better than dad jokes. Thats why there is an API to make them all the time.
                 Any time. Any place. All day. E'ry day.</p>
             <button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="getJoke()">
-                Tell me a joke dad!
+                Tell Me a Joke Dad!
             </button>
             <br><br>
             <form class="form-inline my-2 my-lg-0">
@@ -86,9 +86,9 @@
                         for(var i = 1; i <= data.total_pages; i++) {
                             var page = i;
                             if(data.current_page === i){
-                                $('#paging').append( " <li class='side-by-side'><a class='nav-link active' onclick='getPage("+page+")'>" + i + "</a></li> " );
+                                $('#paging').append( " <li class='side-by-side'><a class='boxed-in' onclick='getPage("+page+")'>" + i + "</a></li> " );
                             } else {
-                                $('#paging').append( " <li class='side-by-side'><a class='nav-link' onclick='getPage("+page+")'>" + i + "</a></li> " );
+                                $('#paging').append( " <li class='side-by-side'><a onclick='getPage("+page+")'>" + i + "</a></li> " );
                             }
                         }
                     }
@@ -100,13 +100,24 @@
 
         function getPage(id) {
             $('#dad-joke').empty();
+            $('#paging').empty();
             $(function(){
                 var term = document.getElementById('jokeSearch').value;
                 page = id;
-                $.getJSON('https://icanhazdadjoke.com/search?term=' + term + '&page=' + page, function(data) {
+                $.getJSON('https://icanhazdadjoke.com/search?term=' + term + '&page=' + page + '&limit=10', function(data) {
                     for(var i = 0; i < data.results.length; i++) {
                         $('#dad-joke').prepend(" <li> <h3> " + data.results[i].joke + " </h3> </li> ")
                     }
+
+                    for(var i = 1; i <= data.total_pages; i++) {
+                        var page = i;
+                        if(data.current_page === i){
+                            $('#paging').append( " <li class='side-by-side'><a class='boxed-in' onclick='getPage("+page+")'>" + i + "</a></li> " );
+                        } else {
+                            $('#paging').append( " <li class='side-by-side'><a onclick='getPage("+page+")'>" + i + "</a></li> " );
+                        }
+                    }
+
                 });
             });
         }
